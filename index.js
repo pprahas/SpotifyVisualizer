@@ -3,6 +3,8 @@ const CLIENT_SECRET = process.env.CLIENT_SECRET;
 const REDIRECT_URI = process.env.REDIRECT_URI;
 const querystring = require("query-string");
 
+const axios = require("axios");
+
 require("dotenv").config();
 const port = 8888;
 
@@ -41,14 +43,44 @@ app.get("/login", (req, res) => {
   const scope = "user-read-private user-read-email";
 
   const queryParams = querystring.stringify({
-    client_id: "69cb2875d7a843548d9e9afc44188876",
+    client_id: CLIENT_ID,
     response_type: "code",
-    redirect_uri: "http://localhost:8888/callback",
+    redirect_uri: REDIRECT_URI,
     state: state,
     scope: scope,
   });
 
   res.redirect(`https://accounts.spotify.com/authorize?${queryParams}`);
+});
+
+app.get("/callback", (req, res) => {
+  const code = req.query.code || null;
+
+  axios({
+    method: "post",
+    url: "https://accounts.spotify.com/api/token",
+    data: querystring.stringify({
+      grant_type: "authorization_code",
+      code: code,
+      redirect_uri: REDIRECT_URI,
+    }),
+    headers: {
+      "content-type": "application/x-www-form-urlencoded",
+      Authorization: `Basic ${new Buffer.from(
+        `${CLIENT_ID}:${CLIENT_SECRET}`
+      ).toString("base64")}`,
+    },
+  })
+    .then((response) => {
+      if (response.status === 200) {
+        res.send(`<pre>${JSON.stringify(response.data, null, 2)}</pre>`);
+      } else {
+        res.send(response);
+      }
+    })
+    .catch((error) => {
+      res.send(error);
+    });
 });
 
 console.log(process.env.CLIENT_ID);
