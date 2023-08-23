@@ -18,12 +18,12 @@ Spotify Visualizer is a dynamic web application designed to visualize your perso
 
 # Technologies and Deployment Stack
 
-- User interface powered by React for dynamic functionality.
+- User interface was powered by React for dynamic functionality.
 
-- Backend utilizes Node.js and Express for communication with external services.
+- Backend utilized Node.js and Express for communication with external services.
 
-- Docker enhances deployment, improving scalability.
+- Docker enhanced deployment, improving scalability.
 
-- Efficient data storage managed by MySQL.
+- Efficient data storage was managed by MySQL.
 
-- AWS serves as cloud infrastructure for data handling and storage.
+- AWS served as cloud infrastructure for data handling and storage.
