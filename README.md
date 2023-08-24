@@ -1,4 +1,4 @@
-# Spotify Visualizer: Explore Your Music Journey
+# Spotify Visualizer: Explore Your Music
 
 Spotify Visualizer is a dynamic web application designed to visualize your personalized Spotify data. With Spotify Visualizer, you can delve into your music preferences, create new playlists based on recommendations, and gain insights into your listening habits.
 
