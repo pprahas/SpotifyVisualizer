@@ -24,6 +24,6 @@ Spotify Visualizer is a dynamic web application designed to visualize your perso
 
 - Docker enhanced deployment, improving scalability.
 
-- Efficient data storage was managed by MySQL.
+- Efficient data storage was managed by PostgreSQL.
 
 - AWS served as cloud infrastructure for data handling and storage.
